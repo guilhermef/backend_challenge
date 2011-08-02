@@ -3,7 +3,7 @@ class Contact < ActiveRecord::Base
   has_many :phone_numbers
   has_many :addresses
   has_many :contact_lists
-  has_many :lists, :through => :contact_lists
+  has_and_belongs_to_many :lists
 
   validates :first_name, :presence => true, :uniqueness => {:scope => :last_name}
   validates_presence_of :last_name

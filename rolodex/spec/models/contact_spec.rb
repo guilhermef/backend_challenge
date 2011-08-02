@@ -14,7 +14,6 @@ describe Contact do
   it { should validate_uniqueness_of(:first_name).
                   scoped_to(:last_name) }
 
-  it { should have_many(:contact_lists) }
-  it { should have_many(:lists).through(:contact_lists) }
+  it { should have_and_belong_to_many(:lists) }
 
 end
