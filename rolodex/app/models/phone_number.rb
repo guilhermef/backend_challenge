@@ -5,6 +5,8 @@ class PhoneNumber < ActiveRecord::Base
 
   belongs_to :contact
   belongs_to :phone_type
+  
+  delegate :name, :to => :phone_type, :prefix => true
 
   validates_presence_of :area_code
   validates_presence_of :number
@@ -14,6 +16,7 @@ class PhoneNumber < ActiveRecord::Base
                       :message => INVALID_PHONE_MESSAGE
   validates_format_of :number, :with => /^\d{7}$/,
                       :message => INVALID_PHONE_MESSAGE
+
 
   def full_number
     "(#{area_code})-#{number[0..2]}-#{number[3..6]}"

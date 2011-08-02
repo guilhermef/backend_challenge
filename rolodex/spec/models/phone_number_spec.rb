@@ -46,8 +46,11 @@ describe PhoneNumber do
       @phone_number.number.should    == '1234567'
     end
   end
-
-  pending 'should delegate phone type name to phone type model'
-  pending 'should have a virtual attribute setter for the phone type'
-
+  
+  it "should delegate phone_type_name to phone type" do
+    phone_type = Factory(:phone_type, :name => 'home')
+    @phone = Factory(:phone_number, :phone_type => phone_type )
+    @phone.phone_type = phone_type
+    @phone.phone_type_name.should == 'home'
+  end
 end
