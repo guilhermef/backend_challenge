@@ -1,2 +1,3 @@
-class PhoneType < ActiveRecord::Base
+class PhoneType < Type
+  
 end

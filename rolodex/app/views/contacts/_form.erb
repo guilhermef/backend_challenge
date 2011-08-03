@@ -1,0 +1,16 @@
+<% semantic_nested_form_for @contact, :remote => true, :formart => :partial do |f| %>
+  <% f.inputs do %>
+    <%= f.input :first_name %>
+    <%= f.input :middle_name %>
+    <%= f.input :last_name %>
+    <h2>Numbers:</h2>
+    <div id="phone_numbers">
+      <% f.fields_for :phone_numbers %>
+      <%= f.link_to_add 'add number', :phone_numbers %>
+    </div>
+  <% end %>
+  
+  <% f.buttons do %>
+    <%= f.commit_button %>
+  <% end %>
+<% end %>

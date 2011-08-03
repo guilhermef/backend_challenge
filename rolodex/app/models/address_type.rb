@@ -1,5 +1,4 @@
-class AddressType < ActiveRecord::Base
+class AddressType < Type
 
-  validates_inclusion_of :name, :in => %w( home office )
 
 end

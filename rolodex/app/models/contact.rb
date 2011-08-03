@@ -1,4 +1,5 @@
 class Contact < ActiveRecord::Base
+  default_scope order(:first_name)
 
   has_many :phone_numbers
   has_many :addresses
@@ -7,6 +8,8 @@ class Contact < ActiveRecord::Base
 
   validates :first_name, :presence => true, :uniqueness => {:scope => :last_name}
   validates_presence_of :last_name
+  
+  accepts_nested_attributes_for :phone_numbers
   
   # validates_uniqueness_of :number, :scope => [:area_code, :contact_id]
 

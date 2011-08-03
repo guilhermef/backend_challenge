@@ -17,13 +17,12 @@ describe Address do
 
   it { should validate_format_of(:zip).with('55416') }
   #<Bug on shoulda lib>
-  it { should validate_format_of(:zip).with('55416-6789').with_message(/invalid/) }
-  it { should validate_format_of(:zip).not_with('554316').with_message(/invalid/) }
-  it { should validate_format_of(:zip).not_with('554s6').with_message(/invalid/) }
-  it { should validate_format_of(:zip).not_with('5 416').with_message(/invalid/) }
-  it { should validate_format_of(:zip).not_with('554166789').with_message(/invalid/) }
-  it { should validate_format_of(:zip).not_with('55416-67892').with_message(/invalid/) }
-  it { should validate_format_of(:zip).not_with(' 55416 ').with_message(/invalid/) }
+  
+  it { should validate_format_of(:zip).with("55416-6789").with_message(/invalid/) }
+  
+  ["554316", "554s6", "5 416", "554166789", "55416-67892", " 55416 "].each do |value| 
+    it { should validate_format_of(:zip).not_with(value).with_message(/invalid/) }
+  end
   #</Bug on shoulda lib>
   
   it "should delegate address_type_name to address type" do

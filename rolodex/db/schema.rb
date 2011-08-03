@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20110802005747) do
   end
 
   create_table "lists", :force => true do |t|
-    t.string "name"
+    t.string "name", :null => false
   end
 
   create_table "phone_numbers", :force => true do |t|

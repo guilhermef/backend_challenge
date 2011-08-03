@@ -4,10 +4,14 @@ gem 'rails'
 
 gem "jquery-rails"
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'formtastic'
+gem 'inherited_resources'
+gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 
 group :test, :development do
   gem 'cucumber-rails'
   gem 'pickle'
+  gem 'spork'
   gem 'database_cleaner'
   gem "rails3-generators"
   gem "shoulda-matchers"

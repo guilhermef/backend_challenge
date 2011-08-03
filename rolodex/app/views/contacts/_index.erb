@@ -1,0 +1,6 @@
+<% @contacts.each do |contact| %>
+  <div class="contact">
+    <span><%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact, :format => :partial), {:class => "remote-show"} %></span>
+    <span><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></span>
+  </div>
+<% end %>

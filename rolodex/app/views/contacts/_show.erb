@@ -1,0 +1,6 @@
+<p><%= @contact.first_name %></p>
+<p><%= @contact.middle_name %></p>
+<p><%= @contact.last_name %></p>
+<% @contact.phone_numbers.each do |number|  %>
+  <span><%= number.full_number %></span>
+<% end %>

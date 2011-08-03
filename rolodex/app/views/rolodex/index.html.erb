@@ -1,7 +1,10 @@
-<div id="contacts">
-  <% for contact in @contacts %>
-    <span>
-      <a href="#"><%= contact.first_name %></a>
-    </span>
-  <% end %>
+<div id="dashboard" class="container_12">
+  <div class="grid_8">
+    <div id="workspace"></div>
+    NOT IMPLEMENTED YET!
+  </div>
+  <div class="grid_4">
+    <%= link_to 'New Contact', new_contact_path(:format => :partial), {:class => "remote-popin"} %>
+    <div id="contacts"></div>
+  </div>
 </div>

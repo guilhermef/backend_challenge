@@ -17,9 +17,10 @@ class PhoneNumber < ActiveRecord::Base
   validates_format_of :number, :with => /^\d{7}$/,
                       :message => INVALID_PHONE_MESSAGE
 
+  accepts_nested_attributes_for :phone_type
 
   def full_number
-    "(#{area_code})-#{number[0..2]}-#{number[3..6]}"
+    "(#{area_code})-#{number[0..2]}-#{number[3..6]}" unless area_code.nil? and number.nil?
   end
 
   def full_number=(full_num)
