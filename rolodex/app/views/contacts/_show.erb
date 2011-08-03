@@ -1,6 +1,8 @@
-<p><%= @contact.first_name %></p>
-<p><%= @contact.middle_name %></p>
-<p><%= @contact.last_name %></p>
+<p>first name: <%= @contact.first_name %></p>
+<p>middle name: <%= @contact.middle_name %></p>
+<p>last name: <%= @contact.last_name %></p>
 <% @contact.phone_numbers.each do |number|  %>
   <span><%= number.full_number %></span>
 <% end %>
+
+<%= link_to "edit contact", edit_contact_path(@contact, :format => :partial), {:class => "remote-show"} %>

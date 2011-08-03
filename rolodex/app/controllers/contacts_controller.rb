@@ -22,6 +22,10 @@ class ContactsController < InheritedResources::Base
     format.partial { render :partial => "form" }
   end
   
+  edit! do |format|
+    format.partial { render :partial => "form" }
+  end
+  
   protected
   def collection
     if params[:q]

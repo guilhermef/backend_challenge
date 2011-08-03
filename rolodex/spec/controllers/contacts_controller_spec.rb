@@ -31,7 +31,7 @@ describe ContactsController do
 
     describe "edit" do
       it "assigns the requested contact as @contact" do
-        get :edit, :id => @contact.id.to_s
+        get :edit, :format => :partial, :id => @contact.id.to_s
         assigns(:contact).should eq(@contact)
       end
     end
@@ -63,26 +63,21 @@ describe ContactsController do
         assigns(:contact).should be_persisted
       end
 
-      it "redirects to the created contact" do
-        post :create, :contact => valid_attributes
-        response.should redirect_to(Contact.last)
-      end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved contact as @contact" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Contact.any_instance.stub(:save).and_return(false)
+        Contact.any_instance.stub(:save!).and_return(false)
         post :create, :contact => {}
         assigns(:contact).should be_a_new(Contact)
       end
 
-      # it "re-renders the 'new' template" do
-      #   # Trigger the behavior that occurs when invalid params are submitted
-      #   Contact.any_instance.stub(:save).and_return(false)
-      #   post :create, :contact => {}
-      #   response.should render_template("new")
-      # end
+      it "re-renders the 'new' template" do
+        Contact.any_instance.stub(:save!).and_return(false)
+        post :create, :contact => {}
+        response.should render_template("contacts/_form")
+      end
     end
   end
 

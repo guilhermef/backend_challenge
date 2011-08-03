@@ -27,4 +27,9 @@ $(document).ready(function() {
     $("#workspace").load(url);
   });
   
+  $("input[name='search']").keyup( function() {
+    var q = $(this).val().trim();
+    q != "" ? loadContacts(q) : loadContacts()
+  });
+  
 });
