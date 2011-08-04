@@ -126,13 +126,21 @@ describe ContactsController do
     it "destroys the requested contact" do
       contact = Contact.create! valid_attributes
       expect {
-        delete :destroy, :id => contact.id.to_s
+        delete :destroy, :id => contact.id
       }.to change(Contact, :count).by(-1)
     end
 
     it "redirects to the contacts list" do
       contact = Contact.create! valid_attributes
-      delete :destroy, :id => contact.id.to_s
+      delete :destroy, :id => contact.id
+      response.should redirect_to(root_url)
+    end
+    
+    it "multiple contacts redirects to the contacts list" do
+      contact = Factory(:contact)
+      contact2 = Factory(:contact)
+      contact3 = Factory(:contact)
+      delete :destroy_ids, :ids => [contact.id, contact2.id, contact3.id]
       response.should redirect_to(root_url)
     end
   end

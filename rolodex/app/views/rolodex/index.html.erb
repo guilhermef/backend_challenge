@@ -1,11 +1,15 @@
 <div id="dashboard" class="container_12">
   <div class="grid_8">
-    Contact info:
+    dashboard
     <div id="workspace"></div>
   </div>
   <div class="grid_4">
     <input name="search"></input>
-    <%= link_to 'New Contact', new_contact_path(:format => :partial), {:class => "remote-popin"} %>
+    <%= form_tag(destroy_ids_contacts_path, :method => :delete, :remote => true, :id => "delete-contacts") do %>
+      <input type="checkbox" name="checkall" class="checkall" >
+      <%= submit_tag "delete selected contacts", :confirm => "Are you sure?" %>
+      <%= link_to 'New Contact', new_contact_path(:format => :partial), {:class => "remote-popin"} %>
     <div id="contacts"></div>
+    <% end %>
   </div>
 </div>

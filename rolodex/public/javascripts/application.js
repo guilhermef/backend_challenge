@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  function clearWorkspace(){
+    $("#workspace").html("");
+  };
   function loadContacts(q){
     var url = "/contacts.partial"
     if ( typeof(q) != 'undefined'){
@@ -11,10 +14,17 @@ $(document).ready(function() {
     var url = $(this).attr("href");
     event.preventDefault();
     $(".popin-mask").load(url, function(){
-      $(this).dialog({modal:true});
+      $(this).dialog({modal:true,
+                      title:"Contact",
+                      resizable:false
+      });
       $(this).ajaxSuccess(function(e, xhr, settings){
-        if (settings.url == '/contacts'){
+        if (/^\/contacts$/.test(settings.url)){
           $(this).html(xhr.responseText);
+          loadContacts();
+        } else if(/^\/contacts\/\d+$/.test(settings.url)){
+          $(this).html(xhr.responseText);
+          clearWorkspace();
           loadContacts();
         };
       });
@@ -31,5 +41,14 @@ $(document).ready(function() {
     var q = $(this).val().trim();
     q != "" ? loadContacts(q) : loadContacts()
   });
+  
+  $("form#delete-contacts").live("ajax:after", function(){
+    clearWorkspace();
+    loadContacts();
+  });
+  
+  $('.checkall').click(function () {
+		$(this).parents('form:eq(0)').find(':checkbox').attr('checked', this.checked);
+	});
   
 });

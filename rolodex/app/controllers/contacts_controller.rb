@@ -1,4 +1,5 @@
 class ContactsController < InheritedResources::Base
+  custom_actions :collection => :destroy_ids
   layout false
   
   index! do |format|
@@ -10,12 +11,12 @@ class ContactsController < InheritedResources::Base
   end
   
   create! do |success, failure|
-      failure.html { render :partial => "form", :status => 200 }
-      success.html { render :nothing , :status => 200 }
+    failure.html { render :partial => "form", :status => 200 }
+    success.html { render :nothing , :status => 200 }
   end
   
   destroy! do |success|
-      success.html { redirect_to root_path }
+    success.html { redirect_to root_path }
   end
   
   new! do |format|
@@ -24,6 +25,13 @@ class ContactsController < InheritedResources::Base
   
   edit! do |format|
     format.partial { render :partial => "form" }
+  end
+  
+  def destroy_ids
+    Contact.delete_ids params[:ids]
+    destroy_ids! do |success|
+      success.html { redirect_to root_path }
+    end
   end
   
   protected
