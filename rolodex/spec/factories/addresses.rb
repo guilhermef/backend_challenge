@@ -2,10 +2,10 @@
 
 Factory.define :address do |f|
   f.association(:contact)
-  f.address "MyString"
+  f.address "Road to nowhere"
   f.zip "55416"
-  f.city "MyString"
-  f.state "MyString"
-  f.country "MyString"
+  f.city "Rio de Janeiro"
+  f.state "Rio de Janeiro"
+  f.country "Brasil"
   f.association(:address_type)
 end
