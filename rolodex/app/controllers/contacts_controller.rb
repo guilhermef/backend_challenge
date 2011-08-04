@@ -29,7 +29,7 @@ class ContactsController < InheritedResources::Base
   end
   
   def destroy_ids
-    Contact.delete_ids params[:ids]
+    Contact.destroy_all :id => params[:ids]
     destroy_ids! do |success|
       success.html { redirect_to root_path }
     end

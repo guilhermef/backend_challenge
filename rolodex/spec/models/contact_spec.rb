@@ -18,17 +18,6 @@ describe Contact do
 
   it { should have_and_belong_to_many(:lists) }
   
-  it "should delete a list of ids" do
-    contact2 = Factory(:contact)
-    contact3 = Factory(:contact)
-    contact4 = Factory(:contact)
-    
-    Contact.all.should have(4).contact
-    Contact.delete_ids [contact2.id, contact3.id, contact4.id]
-    
-    Contact.all.should have(1).contact
-  end
-  
   it "should generate a vcard string" do
     contact = Factory(:contact, :first_name => "Guilherme", :middle_name => "Francisco", :last_name => "Souza")
     contact.addresses << Factory(:address)

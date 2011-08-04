@@ -20,11 +20,6 @@ class Contact < ActiveRecord::Base
 
   end
   
-  def self.delete_ids(ids)
-    contacts = find ids
-    contacts.map(&:delete)
-  end
-  
   def to_vcard
     card = Vpim::Vcard::Maker.make2 do |maker|
       maker.add_name do |name|
