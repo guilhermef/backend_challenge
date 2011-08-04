@@ -36,6 +36,7 @@ Feature: Contact list
     Given a phone_number "2" exists with area_code: "123", number: "2314567", contact: contact "1"
     And I am on root
     When I follow "Axl Rose"
+    And I should see "export to Vcard"
     Then I should see "Axl" info
 
   @selenium	
@@ -101,6 +102,7 @@ Feature: Contact list
     When I check "checkall"
     When I press "delete selected contacts"
     And I confirm
+    And I should see "Steve O"
     And a contact should not exist with id: 1, first_name: "Johnny", last_name: "Knoxville"
     And a contact should not exist with id: 2, first_name: "Johnny", last_name: "Cash"
     And a contact should exist with id: 3, first_name: "Steve", last_name: "O"

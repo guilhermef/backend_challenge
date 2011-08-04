@@ -1,3 +1,5 @@
+require 'vpim/vcard'
+
 class Contact < ActiveRecord::Base
   default_scope order(:first_name)
 
@@ -22,4 +24,28 @@ class Contact < ActiveRecord::Base
     contacts = find ids
     contacts.map(&:delete)
   end
+  
+  def to_vcard
+    card = Vpim::Vcard::Maker.make2 do |maker|
+      maker.add_name do |name|
+        name.given = first_name
+        name.additional = middle_name
+        name.family = last_name
+      end
+        
+      addresses.each do |a|
+          maker.add_addr do |addr|
+            addr.street = a.address
+            addr.locality = a.city
+            addr.locality = a.state
+            addr.country = a.country
+            addr.postalcode = a.zip
+          end
+      end
+      phone_numbers.each do |p|
+        maker.add_tel(p.full_number)
+      end
+    end
+  end
+  
 end

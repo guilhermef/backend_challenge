@@ -28,5 +28,12 @@ describe Contact do
     
     Contact.all.should have(1).contact
   end
+  
+  it "should generate a vcard string" do
+    contact = Factory(:contact, :first_name => "Guilherme", :middle_name => "Francisco", :last_name => "Souza")
+    contact.addresses << Factory(:address)
+    contact.phone_numbers << Factory(:phone_number, :area_code => "123", :number => "1234567")
+    contact.to_vcard.to_s.should == File.read(Rails.root.join("spec/fixtures/contact.vcf"))
+  end
 
 end

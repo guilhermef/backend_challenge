@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Souza;Guilherme;Francisco;;
+FN:Guilherme Francisco Souza
+ADR:;;MyString;MyString;;55416;MyString
+TEL:(123)-123-4567
+END:VCARD

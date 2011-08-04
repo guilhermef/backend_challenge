@@ -8,6 +8,7 @@ class ContactsController < InheritedResources::Base
   
   show! do |format|
     format.partial { render :partial => "show" }
+    format.vcf { send_data @contact.to_vcard.to_s }
   end
   
   create! do |success, failure|

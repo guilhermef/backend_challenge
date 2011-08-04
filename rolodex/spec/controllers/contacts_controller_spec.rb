@@ -21,6 +21,15 @@ describe ContactsController do
         assigns(:contact).should eq(@contact)
       end
     end
+    
+    describe "show vcard" do
+      it "assigns the requested contact as @contact" do
+        get :show, :format => :vcf, :id => @contact.id
+        assigns(:contact).should eq(@contact)
+        response.should_not render_template("contacts/_show")
+        response.should be_ok
+      end
+    end
 
     describe "new" do
       it "assigns a new contact as @contact" do

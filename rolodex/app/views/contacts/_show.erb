@@ -17,3 +17,4 @@
 
 <%= link_to "edit contact", edit_contact_path(@contact, :format => :partial), {:class => "remote-popin"} %>
 <%= link_to 'delete contact', @contact, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to "export to Vcard", contact_path(@contact, :format => :vcf) %>
