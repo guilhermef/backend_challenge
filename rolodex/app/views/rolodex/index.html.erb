@@ -4,7 +4,8 @@
     <div id="workspace"></div>
   </div>
   <div class="grid_4">
-    <input name="search"></input>
+    <label for="search">search</label>
+    <input id="search" name="search"></input>
     <%= form_tag(destroy_ids_contacts_path, :method => :delete, :remote => true, :id => "delete-contacts") do %>
       <input type="checkbox" name="checkall" class="checkall" >
       <%= submit_tag "delete selected contacts", :confirm => "Are you sure?" %>

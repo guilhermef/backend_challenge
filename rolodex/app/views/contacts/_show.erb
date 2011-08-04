@@ -1,17 +1,15 @@
 <p>first name: <%= @contact.first_name %></p>
 <p>middle name: <%= @contact.middle_name %></p>
 <p>last name: <%= @contact.last_name %></p>
-<h2><%= pluralize(@contact.phone_numbers.size, 'Number') %></h2>
 <% @contact.phone_numbers.each do |number|  %>
   <span><%= number.full_number %></span>
 <% end %>
-<h2><%= pluralize(@contact.phone_numbers.size, 'Address') %></h2>
 <% @contact.addresses.each do |address|  %>
-  <span><%= number.address %></span>
-  <span><%= number.zip %></span>
-  <span><%= number.city %></span>
-  <span><%= number.state %></span>
-  <span><%= number.country %></span>
+  <p><%= address.address %></p>
+  <p><%= address.zip %></p>
+  <p><%= address.city %></p>
+  <p><%= address.state %></p>
+  <p><%= address.country %></p>
 <% end %>
 
 
