@@ -16,7 +16,8 @@ $(document).ready(function() {
     $(".popin-mask").load(url, function(){
       $(this).dialog({modal:true,
                       title:"Contact",
-                      resizable:false
+                      resizable:false,
+                      width: 600
       });
       $(this).ajaxSuccess(function(e, xhr, settings){
         if (/^\/contacts$/.test(settings.url)){

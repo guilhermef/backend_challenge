@@ -4,12 +4,10 @@
     <%= f.input :middle_name %>
     <%= f.input :last_name %>
   <% end %>
-  <h2>Numbers:</h2>
   <div id="phone_numbers">
     <%= f.fields_for :phone_numbers %>
     <%= f.link_to_add 'add number', :phone_numbers %>
   </div>
-  <h2>Addresses:</h2>
   <div id="addresses">
     <%= f.fields_for :addresses %>
     <%= f.link_to_add 'add address', :addresses %>
